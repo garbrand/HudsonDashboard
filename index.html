@@ -25,14 +25,38 @@
 			font-size: 80px;
 			line-height: 119px;
 			border-bottom: 1px solid #222;
+
+			background-image: linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
+			background-image: -o-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
+			background-image: -moz-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
+			background-image: -webkit-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
+			background-image: -ms-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
+		}
+		
+		.animate {
+			-webkit-transition-property: all;
+			-webkit-transition-duration: 0.5s;
+			-webkit-animation-timing-function: linear;
+			-webkit-transform: rotateX(180deg);
+			-webkit-transform-origin: 0% 50%; /* bottom */
+			-webkit-transform-style: preserve-3d;
+			-webkit-backface-visibility: hidden;
+		}
+		
+		.up {
+			-webkit-transform: rotateX(0deg);
+		}
+		
+		.flip {
+			-webkit-transform: rotateX(-180deg);
 		}
 	
 		article {
 			width: 45%;
 			margin: 20px 2.5%;
 			float: left;
-			background: #333;
 			text-shadow: 0 1px 1px #000;
+			-webkit-perspective: 400px;
 		}
 		
 		article abbr {
@@ -42,6 +66,10 @@
 			opacity: 0.6;
 		}
 		
+		dl {
+			overflow: auto;
+		}
+		
 		dd, dt {
 			padding: 0 5%;
 			width: 40%;
@@ -49,6 +77,7 @@
 			line-height: 58px;
 			border-top: 1px solid #444;
 			border-bottom: 1px solid #222;
+			background: #333;
 		}
 		
 		dt:after {

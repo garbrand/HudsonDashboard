@@ -95,12 +95,12 @@ var Jenkins = function( project, selector ) {
 	var view = {
 		template: function(data) {
 			return '<article id="' + data.project + '" class="' + data.status + '">'
-			+ '<h2>' + data.project + '</h2>'
-			+ '<dl>'
-			+ '<dt>Coverage</dt>'
-			+ '<dd>' + data.coverage + '</dd>'
-			+ '<dt>Push</dt>'
-			+ '<dd>' + data.person + '</dd>'
+			+ '<h2 class="animate">' + data.project + '</h2>'
+			+ '<dl>'             
+			+ '<dt class="animate">Coverage</dt>'
+			+ '<dd class="animate">' + data.coverage + '</dd>'
+			+ '<dt class="animate">Push</dt>'
+			+ '<dd class="animate">' + data.person + '</dd>'
 			+ '</dl>'
 			+ '</article>';
 		}
@@ -112,6 +112,9 @@ var Jenkins = function( project, selector ) {
 			// TODO: does this return either $view or $(body)?
 			($view.length) ? $view.replaceWith( item ) : $(selector).append( item );
 			
+			// Flip item into view
+			view.flip();
+			
 			// Find broken builds, pulse them
 			var $broken = $(selector).find('.FAILURE');
 			view.pulse($broken);
@@ -119,6 +122,13 @@ var Jenkins = function( project, selector ) {
 		
 		, pulse: function($element) {
 			$element.animate({opacity: 0.2}, 500).animate({opacity: 1}, 500, function() { view.pulse($element); });
+		}
+		
+		, flip: function() {
+			$('.animate')
+				.animate({position: 'static'}, 0, function() { $(this).addClass('up'); })
+				.delay(8500)
+				.animate({position: 'static'}, 0, function() { $(this).removeClass('up').addClass('flip');});
 		}
 	};
 	
