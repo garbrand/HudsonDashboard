@@ -117,11 +117,20 @@ var Jenkins = function( project, selector ) {
 			
 			// Find broken builds, pulse them
 			var $broken = $(selector).find('.FAILURE');
+			if($broken.length) {
+				view.play();
+			}
 			view.pulse($broken);
 		}
 		
 		, pulse: function($element) {
 			$element.animate({opacity: 0.2}, 500).animate({opacity: 1}, 500, function() { view.pulse($element); });
+		}
+		
+		, play: function() {
+			var alerturl = 'sounds/air-raid-siren-alert.mp3';
+			var $alert = $("<embed src='"+ alerturl +"' hidden=true autostart=true loop=false>");
+			$alert.appendTo('body');
 		}
 		
 		, flip: function() {
