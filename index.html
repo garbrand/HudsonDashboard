@@ -10,7 +10,7 @@
 		
 		body {
 			font: normal normal normal 40px/60px 'HelveticaNeue', Helvetica;
-			background: #000; color: #999;
+			background: #000; color: #666;
 		}
 		
 		h1 {
@@ -18,19 +18,22 @@
 			line-height: 160px;
 			letter-spacing: -3px;
 			padding: 0 5%;
+			color: #333;
 		}
 		
 		h2 {
 			padding: 0 5%;
 			font-size: 80px;
 			line-height: 119px;
-			border-bottom: 1px solid #222;
-
+			border-bottom: 1px solid #000;
+			background: #222;
+			/*
 			background-image: linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
 			background-image: -o-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
 			background-image: -moz-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
 			background-image: -webkit-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
 			background-image: -ms-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
+			*/
 		}
 		
 		.animation {
@@ -72,13 +75,12 @@
 		
 		dd, dt {
 			padding: 0 5%;
-			width: 40%;
 /*			float: left;*/
 /*			display: inline-block;*/
 			line-height: 58px;
-			border-top: 1px solid #444;
-			border-bottom: 1px solid #222;
-			background: #333;
+			border-top: 1px solid #333;
+			border-bottom: 1px solid #000;
+			background: #222;
 		}
 		
 		dt:after {
@@ -90,8 +92,9 @@
 		}
 		
 		dd {
-			color: #ddd;
+			color: #999;
 			float: right;
+			width: 60%;
 			margin-top: -60px;
 			overflow: hidden;
 			text-overflow: ellipsis;
