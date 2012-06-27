@@ -115,12 +115,12 @@ var Jenkins = function( project, selector ) {
 			// Flip item into view
 			// view.flip();
 			
-			// Find broken builds, pulse them
+			// Find broken builds, play an alert, pulse them
 			var $broken = $(selector).find('.FAILURE');
 			if($broken.length) {
 				view.play();
-			}
-			view.pulse($broken);
+				view.pulse($broken);
+			};
 		}
 		
 		, pulse: function($element) {
