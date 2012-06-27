@@ -52,6 +52,7 @@ var Jenkins = function( project, selector ) {
 		}
 		
 		, createCoverageIframe: function( callback ) {
+			// TODO: this is now deprecated: see `model.getCoverage`
 			// Implemented as a `$.Deferred`
 			var def = $.Deferred();
 			var $iframe = $('<iframe id="coverage-' + status.project + '" src="' + url.base + url.coverage + '" style="display: none;"></iframe>');
@@ -109,7 +110,11 @@ var Jenkins = function( project, selector ) {
 			var $view = $('#' + data.project);
 			
 			// TODO: does this return either $view or $(body)?
-			return ($view.length) ? $view.replaceWith( item ) : $(selector).append( item );
+			($view.length) ? $view.replaceWith( item ) : $(selector).append( item );
+			
+			// Find broken builds, pulse them
+			var $broken = $(selector).find('.FAILURE');
+			view.pulse($broken);
 		}
 		
 		, pulse: function($element) {
