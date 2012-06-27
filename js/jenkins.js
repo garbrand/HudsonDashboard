@@ -66,8 +66,9 @@ var Jenkins = function( project, selector ) {
 		
 		, parseBuild: function(build) {
 			var stat = {};
-			stat.person = build.culprits[0].fullName.split(' ')[0];
-			stat.status = build.result;
+			stat.person		= build.culprits[0].fullName.split(' ')[0];
+			stat.status		= build.result;
+			stat.message	= build.changeSet.items[0].msg;
 			
 			return stat;
 		}
@@ -83,6 +84,7 @@ var Jenkins = function( project, selector ) {
 				var tmp = model.parseBuild(build[0]);
  				status.person = tmp.person;
 				status.status = tmp.status;
+				status.message = tmp.message;
 				
 				status.coverage = model.scrapeCoveragePercentage(coverage[0]);
 				// status.coverage = model.scrapeCoveragePercentage(coverage.contents());
@@ -101,6 +103,8 @@ var Jenkins = function( project, selector ) {
 			+ '<dd class="animate">' + data.coverage + '</dd>'
 			+ '<dt class="animate">Push</dt>'
 			+ '<dd class="animate">' + data.person + '</dd>'
+			+ '<dt class="animate">Message</dt>'
+			+ '<dd class="animate">' + data.message + '</dd>'
 			+ '</dl>'
 			+ '</article>';
 		}
