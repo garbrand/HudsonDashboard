@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+	<title>Awesome Dash</title>
+	<style type="text/css" media="screen">
+		html * {
+			margin: 0;
+			padding: 0;
+		}
+		
+		body {
+			font: normal normal normal 40px/60px 'HelveticaNeue', Helvetica;
+			background: #000; color: #fff;
+		}
+		
+		h1 {
+			font-size: 120px;
+			line-height: 160px;
+			letter-spacing: -3px;
+			padding: 0 5%;
+		}
+		
+		h2 {
+			padding: 0 5%;
+			font-size: 80px;
+			line-height: 119px;
+			border-bottom: 1px solid #222;
+		}
+	
+		article {
+			width: 45%;
+			margin: 20px 2.5%;
+			float: left;
+			background: #333;
+		}
+		
+		article abbr {
+			display: none;
+			font-size: 20px; 
+			float: right;
+			opacity: 0.6;
+		}
+		
+		dd, dt {
+			padding: 0 5%;
+			width: 40%;
+			float: left;
+			line-height: 58px;
+			border-top: 1px solid #444;
+			border-bottom: 1px solid #222;
+		}
+		
+		dt:after {
+			content: ':';
+		}
+		
+		article#api {
+			left: 0;
+		}
+		
+		article#client {
+			right: 0;
+		}
+		
+		article.FAILURE {
+			background: red;
+		}
+		
+		article.FAILURE h2,
+		article.FAILURE dd,
+		article.FAILURE dt {
+			border-top:    1px solid #FC4F58;
+			border-bottom: 1px solid #CF000D;
+		}
+	</style>
+</head>
+<body>
+	<h1>Build Status</h1>
+	
+	<script src="lib/jquery-1.6.4.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jenkins.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			api = new Jenkins('sipes.api');
+			api.init();
+
+			client = new Jenkins('sipes.client');
+			client.init();
+		});
+	</script>
+</body>
+</html>
