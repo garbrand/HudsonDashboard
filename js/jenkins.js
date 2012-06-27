@@ -113,7 +113,7 @@ var Jenkins = function( project, selector ) {
 			($view.length) ? $view.replaceWith( item ) : $(selector).append( item );
 			
 			// Flip item into view
-			view.flip();
+			// view.flip();
 			
 			// Find broken builds, pulse them
 			var $broken = $(selector).find('.FAILURE');
@@ -126,6 +126,7 @@ var Jenkins = function( project, selector ) {
 		
 		, flip: function() {
 			$('.animate')
+				.addClass('animation')
 				.animate({position: 'static'}, 0, function() { $(this).addClass('up'); })
 				.delay(8500)
 				.animate({position: 'static'}, 0, function() { $(this).removeClass('up').addClass('flip');});
