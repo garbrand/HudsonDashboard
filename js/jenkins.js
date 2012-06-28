@@ -73,6 +73,13 @@ var Jenkins = function( project, selector ) {
 			return stat;
 		}
 		
+		// Trim leading and trailing spaces from `s`
+		, trim: function( s ) {
+				s = s.replace(/(^\s*)|(\s*$)/gi,"");
+				s = s.replace(/[ ]{2,}/gi," ");
+				s = s.replace(/\n /,"\n");
+				return s;
+		}
 		
 		, fetch: function( callback ) {
 			// Execute the 2 loads in parrallel as deferreds:
@@ -99,12 +106,12 @@ var Jenkins = function( project, selector ) {
 			return '<article id="' + data.project + '" class="' + data.status + '">'
 			+ '<h2 class="animate">' + data.project + '</h2>'
 			+ '<dl>'             
-			+ '<dt class="animate">Coverage</dt>'
-			+ '<dd class="animate">' + data.coverage + '</dd>'
-			+ '<dt class="animate">Push</dt>'
-			+ '<dd class="animate">' + data.person + '</dd>'
-			+ '<dt class="animate">Message</dt>'
-			+ '<dd class="animate">' + data.message + '</dd>'
+			+ '<dt class="animate coverage">Coverage</dt>'
+			+ '<dd class="animate coverage">' + data.coverage + '</dd>'
+			+ '<dt class="animate person">Push</dt>'
+			+ '<dd class="animate person">' + data.person + '</dd>'
+			+ '<dt class="animate message">Message</dt>'
+			+ '<dd class="animate message">' + data.message + '</dd>'
 			+ '</dl>'
 			+ '</article>';
 		}
@@ -119,22 +126,11 @@ var Jenkins = function( project, selector ) {
 			// Flip item into view
 			// view.flip();
 			
-			// Find broken builds, play an alert, pulse them
-			var $broken = $(selector).find('.FAILURE');
-			if($broken.length) {
-				view.play();
-				view.pulse($broken);
-			};
+			controller.checkForBrokenBuild();
 		}
 		
 		, pulse: function($element) {
 			$element.animate({opacity: 0.2}, 500).animate({opacity: 1}, 500, function() { view.pulse($element); });
-		}
-		
-		, play: function() {
-			var alerturl = 'sounds/air-raid-siren-alert.mp3';
-			var $alert = $("<embed src='"+ alerturl +"' hidden=true autostart=true loop=false>");
-			$alert.appendTo('body');
 		}
 		
 		, flip: function() {
@@ -175,13 +171,31 @@ var Jenkins = function( project, selector ) {
 		, getCoverage: function() {
 			model.createCoverageIframe(model.scrapeCoveragePercentage);
 		}
+		
+		, play: function() {
+			// var alerturl = 'sounds/air-raid-siren-alert.mp3';
+			// var $alert = $('<embed id="alert" src="' + alerturl + '"hidden=true autostart=false loop=true>');
+			// $alert.appendTo('body');
+			
+			var alert = document.getElementById('alert');
+			alert.Play();
+		}
+		
+		, checkForBrokenBuild: function() {
+			// Find broken builds, play an alert, pulse them
+			var $broken = $(selector).find('.FAILURE');
+			if($broken.length) {
+				controller.play();
+				view.pulse($broken);
+			};
+		}
 	};
 
 	var api = {
 		  init: controller.init
 		, poll: controller.poll
 		, stop: controller.stop
-		, frame: controller.getCoverage
+		, play: controller.play
 	};
 	
 	return api;
