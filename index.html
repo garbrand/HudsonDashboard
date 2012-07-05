@@ -5,7 +5,11 @@
 	<link rel="stylesheet" href="css/master.css" type="text/css" media="screen" title="stylesheet" charset="utf-8">
 </head>
 <body>
-	<embed id="alert" src="sounds/air-raid-siren-alert.mp3" hidden="true" autostart="false" loop="true" enablejavascript="true">
+		
+	<audio id="alert" preload="auto" autobuffer>
+	  <source src="sounds/air-raid-siren-alert.mp3" type="audio/mp3" />
+	</audio>
+		
 	<h1>Build Status</h1>
 	
 	<script src="lib/jquery-1.6.4.js" type="text/javascript" charset="utf-8"></script>

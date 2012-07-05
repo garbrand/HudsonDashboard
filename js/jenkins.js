@@ -173,9 +173,8 @@ var Jenkins = function( project, selector ) {
 		}
 		
 		, play: function() {
-			// This is not support by jQuery, hence `getElementById`
 			var alert = document.getElementById('alert');
-			alert.Play();
+			alert.play();
 		}
 		
 		, checkForBrokenBuild: function() {
