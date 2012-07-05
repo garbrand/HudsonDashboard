@@ -173,10 +173,7 @@ var Jenkins = function( project, selector ) {
 		}
 		
 		, play: function() {
-			// var alerturl = 'sounds/air-raid-siren-alert.mp3';
-			// var $alert = $('<embed id="alert" src="' + alerturl + '"hidden=true autostart=false loop=true>');
-			// $alert.appendTo('body');
-			
+			// This is not support by jQuery, hence `getElementById`
 			var alert = document.getElementById('alert');
 			alert.Play();
 		}
