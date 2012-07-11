@@ -165,6 +165,9 @@ var Jenkins = function( project, selector ) {
 			model.fetch(view.render);
 			controller.poll();
 			
+			// <audio src="elvis.ogg" controls preload="auto" autobuffer></audio>
+			console.log('This browser can play audio:', !!document.createElement('audio').canPlayType );
+			
 			// TODO: add a check for failure, call view.pulse() on it
 		}
 		
