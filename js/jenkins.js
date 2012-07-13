@@ -66,9 +66,9 @@ var Jenkins = function( project, selector ) {
 		
 		, parseBuild: function(build) {
 			var stat = {};
-			stat.person		= build.culprits[0].fullName.split(' ')[0];
-			stat.status		= build.result;
-			stat.message	= build.changeSet.items[0].msg;
+			stat.person		= build.culprits[0].fullName.split(' ')[0] || 'Anonymous';
+			stat.status		= build.result || 'No status message';
+			stat.message	= (build.changeSet.items.length) ? build.changeSet.items[0].msg : 'No message';
 			
 			return stat;
 		}
