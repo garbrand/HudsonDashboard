@@ -69,6 +69,7 @@ var Jenkins = function( project, selector ) {
 			stat.person		= build.culprits[0].fullName.split(' ')[0] || 'Anonymous';
 			stat.status		= build.result || 'No status message';
 			stat.message	= (build.changeSet.items.length) ? build.changeSet.items[0].msg : 'No message';
+			stat.time		= new Date( build.timestamp ).toLocaleString();
 			
 			return stat;
 		}
@@ -89,9 +90,13 @@ var Jenkins = function( project, selector ) {
 			.done(function(build, coverage) {
 				// TODO: check for errors, handle them
 				var tmp = model.parseBuild(build[0]);
+				
+				console.log('build', build[0]);
+				
  				status.person = tmp.person;
 				status.status = tmp.status;
 				status.message = tmp.message;
+				status.time = tmp.time;
 				
 				status.coverage = model.scrapeCoveragePercentage(coverage[0]);
 				// status.coverage = model.scrapeCoveragePercentage(coverage.contents());
@@ -111,7 +116,7 @@ var Jenkins = function( project, selector ) {
 			+ '<dt class="animate person">Push</dt>'
 			+ '<dd class="animate person">' + data.person + '</dd>'
 			+ '<dt class="animate message">Message</dt>'
-			+ '<dd class="animate message">' + data.message + '</dd>'
+			+ '<dd class="animate message info">' + data.message + '<br />' + data.time + '</dd>'
 			+ '</dl>'
 			+ '</article>';
 		}

@@ -22,13 +22,6 @@
 			line-height: 119px;
 			border-bottom: 1px solid #000;
 			background: #222;
-			/*
-			background-image: linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
-			background-image: -o-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
-			background-image: -moz-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
-			background-image: -webkit-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
-			background-image: -ms-linear-gradient(top, rgb(68,68,68) 10%, rgb(51,51,51) 71%);
-			*/
 		}
 		
 		.animation {
@@ -70,8 +63,6 @@
 		
 		dd, dt {
 			padding: 0 5%;
-/*			float: left;*/
-/*			display: inline-block;*/
 			line-height: 58px;
 			border-top: 1px solid #333;
 			border-bottom: 1px solid #000;
@@ -94,6 +85,11 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
+		}
+		
+		dd.info {
+			font-size: 20px;
+			line-height: 29px;
 		}
 		
 		article#api {
