@@ -53,7 +53,7 @@ var Jenkins = function( project, selector ) {
 		
 		, scrapeCoveragePercentage: function(report) {
 			var $report = $(report);
-			var percentage = $report.find('#stats:first .percentage').text();
+			var percentage = $report.length ? $report.find('#stats:first .percentage').text() : 'No coverage!';
 			return percentage;
 		}
 		
