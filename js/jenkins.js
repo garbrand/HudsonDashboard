@@ -20,6 +20,10 @@ var Jenkins = function( project, selector ) {
 	case 'sipes.client':
 		url.coverage = 'sipes/Coverage_Reports/client-coverage.html';
 		break;
+	case 'sipes.design':
+		url.coverage = 'sipes/Coverage_Reports/design-coverage.html';
+	case 'sipes.users':
+		url.coverage = 'sipes/Coverage_Reports/users-coverage.html';
 	};
 	
 	var $placeholder = $({});
@@ -41,7 +45,9 @@ var Jenkins = function( project, selector ) {
 		}
 		
 		, getCoverage: function() {
-			return $.ajax(url.base + url.coverage);
+			var result = $.ajax(url.base + url.coverage);
+			// console.log(result);
+			return result;
 			// return $.ajax('tests/stubs/coverage.html');
 		}
 		
@@ -91,7 +97,7 @@ var Jenkins = function( project, selector ) {
 				// TODO: check for errors, handle them
 				var tmp = model.parseBuild(build[0]);
 				
-				console.log('build', build[0]);
+				// console.log('build', build[0]);
 				
  				status.person = tmp.person;
 				status.status = tmp.status;
@@ -169,9 +175,6 @@ var Jenkins = function( project, selector ) {
 		, init: function() {
 			model.fetch(view.render);
 			controller.poll();
-			
-			// <audio src="elvis.ogg" controls preload="auto" autobuffer></audio>
-			console.log('This browser can play audio:', !!document.createElement('audio').canPlayType );
 			
 			// TODO: add a check for failure, call view.pulse() on it
 		}

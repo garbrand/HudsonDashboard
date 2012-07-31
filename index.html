@@ -22,6 +22,12 @@
 
 			client = new Jenkins('sipes.client');
 			client.init();
+			
+			users = new Jenkins('sipes.users');
+			users.init();
+			
+			design = new Jenkins('sipes.design');
+			design.init();
 		});
 	</script>
 </body>
