@@ -107,3 +107,10 @@
 			border-bottom: 1px solid #CF000D;
 			background: red; color: #fff;
 		}
+		
+		
+		
+		.low { 			color: #FC5961; }
+		.medium { 		color: #FDC360; }
+		.sufficient { 	color: #FFFF61; }
+		.ok { 			color: #44C63C; }

@@ -54,7 +54,21 @@ var Jenkins = function( project, selector ) {
 		, scrapeCoveragePercentage: function(report) {
 			var $report = $(report);
 			var percentage = $report.length ? $report.find('#stats:first .percentage').text() : 'No coverage!';
-			return percentage;
+			return model.inspectCoverage(percentage);
+		}
+		
+		, inspectCoverage: function(percentage) {
+			// Take a look at percentage, wrap it in classes depending on its value
+			var wrapped;
+			var value;
+			
+			// take off the %
+			value = percentage.slice(0,-1); 
+			                                 
+			if(value <= 33) return wrapped = '<span class="low">'+value+'%</span>';
+			if(value <= 70) return wrapped = '<span class="medium">'+value+'%</span>';
+			if(value <= 89) return wrapped = '<span class="sufficient">'+value+'%</span>';
+			if(value >= 90) return wrapped = '<span class="ok">'+value+'%</span>';
 		}
 		
 		, createCoverageIframe: function( callback ) {
