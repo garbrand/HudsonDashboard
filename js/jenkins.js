@@ -204,7 +204,7 @@ var Jenkins = function( project, selector ) {
 		
 		, checkForBrokenBuild: function() {
 			// Find broken builds, play an alert, pulse them
-			var $broken = $(selector).find('.FAILURE');
+			var $broken = $(selector).find('.FAILURE, .low');
 			if($broken.length) {
 				controller.play();
 				view.pulse($broken);
