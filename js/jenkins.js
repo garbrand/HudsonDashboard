@@ -65,9 +65,8 @@ var Jenkins = function( project, selector ) {
 			// take off the %
 			value = percentage.slice(0,-1); 
 			                                 
-			if(value <= 33) return wrapped = '<span class="low">'+value+'%</span>';
-			if(value <= 70) return wrapped = '<span class="medium">'+value+'%</span>';
-			if(value <= 89) return wrapped = '<span class="sufficient">'+value+'%</span>';
+			if(value <= 70) return wrapped = '<span class="low">'+value+'%</span>';
+			if(value <= 89) return wrapped = '<span class="medium">'+value+'%</span>';
 			if(value >= 90) return wrapped = '<span class="ok">'+value+'%</span>';
 		}
 		
@@ -203,7 +202,7 @@ var Jenkins = function( project, selector ) {
 		}
 		
 		, checkForBrokenBuild: function() {
-			// Find broken builds, play an alert, pulse them
+			// Find broken builds and low coverage, play an alert, pulse them
 			var $broken = $(selector).find('.FAILURE, .low');
 			if($broken.length) {
 				controller.play();
