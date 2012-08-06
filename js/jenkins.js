@@ -22,6 +22,7 @@ var Jenkins = function( project, selector ) {
 		break;
 	case 'sipes.design':
 		url.coverage = 'sipes/Coverage_Reports/design-coverage.html';
+        break;
 	case 'sipes.users':
 		url.coverage = 'sipes/Coverage_Reports/users-coverage.html';
 	};
