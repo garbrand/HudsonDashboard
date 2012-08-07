@@ -92,6 +92,23 @@
 			line-height: 29px;
 		}
 		
+		dd.coverage div {
+			display: inline;
+		}
+		
+		.sloc {
+			float: right;
+		}
+		
+		.sloc:before {
+			content: 'SLOC: ';
+		}
+		
+		dd.coverage div.hits, 
+		dd.coverage div.misses {
+			display: none;
+		}
+		
 		article#api {
 			left: 0;
 		}

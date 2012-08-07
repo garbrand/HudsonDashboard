@@ -25,6 +25,7 @@ var Jenkins = function( project, selector ) {
         break;
 	case 'sipes.users':
 		url.coverage = 'sipes/Coverage_Reports/users-coverage.html';
+		break;
 	};
 	
 	var $placeholder = $({});
@@ -75,6 +76,7 @@ var Jenkins = function( project, selector ) {
 		, getCoverageReport: function(report) {
 			var $report = $(report).find('#stats');
 			var stats = ($report.length > 0 || ! $report) ? $report.html() : 'No coverage!';
+			
 			return stats;
 		}
 		
@@ -125,9 +127,8 @@ var Jenkins = function( project, selector ) {
 				status.message = tmp.message;
 				status.time = tmp.time;
 				
-				// status.coverage = model.scrapeCoveragePercentage(coverage[0]);
-				status.coverage = model.getCoverageReport(coverage[0]);
-				// status.coverage = model.scrapeCoveragePercentage(coverage.contents());
+				status.coverage = model.scrapeCoveragePercentage(coverage[0]);
+				// status.coverage = model.getCoverageReport(coverage[0]);
 				
 				callback( status );
 			});
