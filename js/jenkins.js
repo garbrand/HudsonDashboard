@@ -54,7 +54,8 @@ var Jenkins = function( project, selector ) {
 		
 		, scrapeCoveragePercentage: function(report) {
 			var $report = $(report);
-			var percentage = $report.length ? $report.find('#stats:first .percentage').text() : 'No coverage!';
+			console.log($report.length);
+			var percentage = ($report.length > 0) ? $report.find('#stats:first .percentage').text() : 'No coverage!';
 			return model.inspectCoverage(percentage);
 		}
 		
@@ -69,6 +70,12 @@ var Jenkins = function( project, selector ) {
 			if(value <= 70) return wrapped = '<span class="low">'+value+'%</span>';
 			if(value <= 89) return wrapped = '<span class="medium">'+value+'%</span>';
 			if(value >= 90) return wrapped = '<span class="ok">'+value+'%</span>';
+		}
+		
+		, getCoverageReport: function(report) {
+			var $report = $(report).find('#stats');
+			var stats = ($report.length > 0 || ! $report) ? $report.html() : 'No coverage!';
+			return stats;
 		}
 		
 		, createCoverageIframe: function( callback ) {
@@ -118,7 +125,8 @@ var Jenkins = function( project, selector ) {
 				status.message = tmp.message;
 				status.time = tmp.time;
 				
-				status.coverage = model.scrapeCoveragePercentage(coverage[0]);
+				// status.coverage = model.scrapeCoveragePercentage(coverage[0]);
+				status.coverage = model.getCoverageReport(coverage[0]);
 				// status.coverage = model.scrapeCoveragePercentage(coverage.contents());
 				
 				callback( status );
