@@ -112,7 +112,7 @@ var Jenkins = function( project, selector ) {
 		}
 		
 		, fetch: function( callback ) {
-			// Execute the 2 loads in parrallel as deferreds:
+			// Execute the 2 loads in parallel as deferreds:
 			jQuery
 			.when( model.getLastBuild(), model.getCoverage() )
 			// .when( model.getLastBuild(), model.createCoverageIframe() )

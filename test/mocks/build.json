@@ -1,0 +1,92 @@
+/* https://hudson.informaat.nl/job/sipes.client2/lastBuild/api/json */
+{
+    "actions": [
+        {
+            "causes": [
+                {
+                    "shortDescription": "Started by an SCM change"
+                }
+            ]
+        }, 
+        {}, 
+        {
+            "mercurialNodeName": "5acfdce4952fb8f7b8874b77265c2d6f7b2f1f1e", 
+            "mercurialRevisionNumber": "477", 
+            "subdir": null
+        }, 
+        {}
+    ], 
+    "artifacts": [], 
+    "building": false, 
+    "builtOn": "", 
+    "changeSet": {
+        "items": [
+            {
+                "addedPaths": [
+                    "framework/src/extensions/resource-state/model.js", 
+                    "framework/src/extensions/resource-state/test/test.model.js"
+                ], 
+                "affectedPaths": [
+                    "framework/src/extensions/resource-state/model.js", 
+                    "framework/src/extensions/resource-state/test/test.model.js"
+                ], 
+                "author": {
+                    "absoluteUrl": "https://hudson.informaat.nl/user/Andre%20Haveman%20_andre.haveman@informaat.nl_", 
+                    "fullName": "Andre Haveman <andre.haveman@informaat.nl>"
+                }, 
+                "commitId": null, 
+                "date": "1347352115.0-7200", 
+                "deletedPaths": [], 
+                "merge": false, 
+                "modifiedPaths": [], 
+                "msg": "empty model and test", 
+                "node": "5acfdce4952fb8f7b8874b77265c2d6f7b2f1f1e", 
+                "rev": 477, 
+                "timestamp": -1
+            }, 
+            {
+                "addedPaths": [], 
+                "affectedPaths": [
+                    ".hgtags"
+                ], 
+                "author": {
+                    "absoluteUrl": "https://hudson.informaat.nl/user/Hudson%20_ipedevs@informaat.nl_", 
+                    "fullName": "Hudson <ipedevs@informaat.nl>"
+                }, 
+                "commitId": null, 
+                "date": "1347290192.0-7200", 
+                "deletedPaths": [], 
+                "merge": false, 
+                "modifiedPaths": [
+                    ".hgtags"
+                ], 
+                "msg": "Added tag build-131 for changeset 652c5de83411", 
+                "node": "e4e1e9ea454ced514bda0e5ab36e009e93f231d8", 
+                "rev": 476, 
+                "timestamp": -1
+            }
+        ], 
+        "kind": "hg"
+    }, 
+    "culprits": [
+        {
+            "absoluteUrl": "https://hudson.informaat.nl/user/Andre%20Haveman%20_andre.haveman@informaat.nl_", 
+            "fullName": "Andre Haveman <andre.haveman@informaat.nl>"
+        }, 
+        {
+            "absoluteUrl": "https://hudson.informaat.nl/user/Hudson%20_ipedevs@informaat.nl_", 
+            "fullName": "Hudson <ipedevs@informaat.nl>"
+        }
+    ], 
+    "description": null, 
+    "duration": 1118, 
+    "estimatedDuration": 1271, 
+    "executor": null, 
+    "fullDisplayName": "sipes.client2 #132", 
+    "id": "2012-09-11_10-31-30", 
+    "keepLog": false, 
+    "number": 132, 
+    "result": "SUCCESS", 
+    "timestamp": 1347352290043, 
+    "url": "https://hudson.informaat.nl/job/sipes.client2/132/"
+}

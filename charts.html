@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Burndown</title>
+	<style type="text/css" media="screen">
+		html * {
+			padding: 0; margin: 0;
+		}
+		
+		.pinned {
+			position: absolute; overflow: auto;
+		}
+		
+		.height {
+			top: 0; bottom: 0;
+		}
+		
+		.sides {
+			right: 0; left: 0;
+		}
+		
+		#sheets {
+			display: none;
+			z-index: 1000;
+		}
+		
+		#sheets iframe {
+			width: 100%; height: 100%;
+		}
+		
+		#charts iframe {
+			width: 50%; height: 50%;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="viewport pinned height sides">
+		<div class="viewport pinned height sides" id="sheets">
+			<!-- ALL -->
+			<iframe frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=0AoMLeMpVOVUCdHI0MnJueDNSWUEzNFJSTVVDZmNGc2c&output=html&widget=true'></iframe>
+		</div>
+		<div class="viewport pinned height sides" id="charts">
+			<!-- OPS -->
+			<iframe frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=0AoMLeMpVOVUCdHI0MnJueDNSWUEzNFJSTVVDZmNGc2c&single=true&gid=11&output=html&widget=true'></iframe>
+			<!-- Burndown -->
+			<iframe frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=0AoMLeMpVOVUCdHI0MnJueDNSWUEzNFJSTVVDZmNGc2c&single=true&gid=2&output=html&widget=true'></iframe>
+			<!-- Unplanned -->
+			<iframe frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=0AoMLeMpVOVUCdHI0MnJueDNSWUEzNFJSTVVDZmNGc2c&single=true&gid=6&output=html&widget=true'></iframe>
+			<!-- Story Points -->
+			<iframe frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=0AoMLeMpVOVUCdHI0MnJueDNSWUEzNFJSTVVDZmNGc2c&single=true&gid=9&output=html&widget=true'></iframe>
+		</div>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+			bindKeys();
+			
+			function toggle() {
+				$('#sheets').toggle();
+			}
+			
+			function bindKeys() {
+				$('body').keypress(function(event, ui) {
+					// SHIFT + S
+					if(event.which == 83 && event.shiftKey) toggle();
+				});
+			};
+		});
+	</script>
+</body>
+</html>
