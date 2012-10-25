@@ -56,6 +56,7 @@
 	<script type="text/javascript" charset="utf-8">
 		$(function() {
 			bindKeys();
+			// poll();
 			
 			function toggle() {
 				$('#sheets').toggle();
@@ -63,9 +64,32 @@
 			
 			function bindKeys() {
 				$('body').keypress(function(event, ui) {
-					// SHIFT + S
+					console.log(event.which);
+					// SHIFT + S: toggle views
 					if(event.which == 83 && event.shiftKey) toggle();
+					// SHIFT + R: reload charts
+					if(event.which == 10 && events.shiftKey) reload();
 				});
+			};
+			
+			function reload() {
+				var $iframes = $('iframe');
+				var $this;
+				
+				$.each($iframes, function() {
+					$this = $(this);
+					console.log($this.attr('src'));
+					$this.attr('src', $this.attr('src'));
+				});
+			};
+			
+			function poll() {
+				var timer = 10 * 1000;
+				
+				var id = setInterval(function() { 
+					reload();
+				}, timer);
+				console.log('polling with id', id, 'with interval', timer);
 			};
 		});
 	</script>

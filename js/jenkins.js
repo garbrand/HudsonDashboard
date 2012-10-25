@@ -20,11 +20,11 @@ var Jenkins = function( project, selector ) {
 	case 'sipes.client':
 		url.coverage = 'sipes/Coverage_Reports/client-coverage.html';
 		break;
-	case 'sipes.design':
-		url.coverage = 'sipes/Coverage_Reports/design-coverage.html';
+	case 'sipes.client2':
+		url.coverage =  'sipes/api/json';
         break;
-	case 'sipes.users':
-		url.coverage = 'sipes/Coverage_Reports/users-coverage.html';
+	case 'sipes.wallaby':
+		url.coverage =  'sipes/api/json';
 		break;
 	};
 	
@@ -48,9 +48,7 @@ var Jenkins = function( project, selector ) {
 		
 		, getCoverage: function() {
 			var result = $.ajax(url.base + url.coverage);
-			// console.log(result);
 			return result;
-			// return $.ajax('tests/stubs/coverage.html');
 		}
 		
 		, scrapeCoveragePercentage: function(report) {
@@ -116,6 +114,7 @@ var Jenkins = function( project, selector ) {
 			jQuery
 			.when( model.getLastBuild(), model.getCoverage() )
 			// .when( model.getLastBuild(), model.createCoverageIframe() )
+			.fail( function() { console.log('error', arguments); })
 			.done(function(build, coverage) {
 				// TODO: check for errors, handle them
 				var tmp = model.parseBuild(build[0]);
