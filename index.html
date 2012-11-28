@@ -28,6 +28,7 @@
 		$(function(){
 			
 			bindkeys();
+			standup();
 			
 			function autoflip() {
 				// Flip the views every x seconds
@@ -36,6 +37,17 @@
 				var id = setInterval(function() {
 					toggle();
 				}, timer);
+			}
+			
+			function standup() {
+				var time  = Date.now();
+				var hours = time.getHours();
+				var mins  = time.getMinutes();
+				
+				if(hours == 9 && (mins >= 25 && mins <= 50)) {
+					console.log('STANDUP TIME!');
+					toggle();
+				}
 			}
 			
 			function toggle() {

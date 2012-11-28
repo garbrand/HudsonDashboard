@@ -21,7 +21,8 @@ var Jenkins = function( project, selector ) {
 		url.coverage = 'sipes/Coverage_Reports/client-coverage.html';
 		break;
 	case 'sipes.client2':
-		url.coverage =  'sipes/api/json';
+		// url.coverage =  'sipes/api/json';
+		url.coverage = 'sipes/modules/client2/client2.json'
         break;
 	case 'sipes.wallaby':
 		url.coverage =  'sipes/api/json';
