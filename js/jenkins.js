@@ -22,7 +22,7 @@ var Jenkins = function( project, selector ) {
 		break;
 	case 'sipes.client2':
 		// url.coverage =  'sipes/api/json';
-		url.coverage = 'sipes/modules/client2/client2.json'
+		url.coverage = 'sipes/ws/modules/client2/client2.json'
         break;
 	case 'sipes.wallaby':
 		url.coverage =  'sipes/api/json';
@@ -49,12 +49,12 @@ var Jenkins = function( project, selector ) {
 		
 		, getCoverage: function() {
 			var result = $.ajax(url.base + url.coverage);
+			console.log(result);
 			return result;
 		}
 		
 		, scrapeCoveragePercentage: function(report) {
 			var $report = $(report);
-			console.log($report.length);
 			var percentage = ($report.length > 0) ? $report.find('#stats:first .percentage').text() : 'No coverage!';
 			return model.inspectCoverage(percentage);
 		}
